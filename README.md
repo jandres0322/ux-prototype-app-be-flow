@@ -12,7 +12,7 @@
 
 ## Instalación
 
-1. Descarga el archivo APK de la última versión desde [aquí](link).
+1. Descarga el archivo APK de la última versión desde [aquí](https://github.com/jandres0322/ux-prototype-app-be-flow/blob/master/app-release.apk).
 2. Instala el archivo APK en tu dispositivo Android.
 3. Abre la aplicación BeFlow en tu dispositivo y comienza a utilizarla.
 
