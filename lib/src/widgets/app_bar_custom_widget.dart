@@ -13,6 +13,7 @@ class AppBarCustom {
       title: ButtonCustom(
         colorButtonDisabled: AppColors.pomodoro,
         colorTextDisabled: AppColors.primary,
+        colorBorder: AppColors.pomodoro,
         width: size.width * 0.5,
         height: size.height * 0.05,
         textButton: "Pomodoro",

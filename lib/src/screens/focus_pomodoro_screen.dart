@@ -76,7 +76,8 @@ class _FocusPomodoroScreenState extends State<FocusPomodoroScreen> {
                     height: size.height * 0.05,
                     textButton: 'Terminar Pomodoro',
                     onPressed: () {
-                      deactivateAlarm();
+                      timer?.cancel();
+                      showDialogAlarm(context);
                     }),
               SizedBox(height: size.height * 0.03),
               Container(
@@ -112,7 +113,7 @@ class _FocusPomodoroScreenState extends State<FocusPomodoroScreen> {
                       child: ListView.builder(
                         itemCount: userDataProvider.isModeFocus
                             ? userDataProvider.getTaskOnPomodoro().length
-                            : userDataProvider.userLogged!.tasks.length,
+                            : userDataProvider.userLogged?.tasks.length,
                         itemBuilder: (context, index) {
                           return ListTile(
                             title: Text(
@@ -142,6 +143,53 @@ class _FocusPomodoroScreenState extends State<FocusPomodoroScreen> {
           ? Container()
           : buildFloatingActionButton(size, context, userDataProvider),
       bottomNavigationBar: const ButtonHome(),
+    );
+  }
+
+  Future<dynamic> showDialogAlarm(
+    BuildContext context
+  ) {
+    final Size size = MediaQuery.of(context).size;
+    return showDialog(
+      context: context,
+      builder: (_) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            side: BorderSide(
+              color: AppColors.primary,
+              width: 2
+            ),
+            borderRadius: BorderRadius.circular(20.0)
+          ),
+          title: Text(
+            'Alarma',
+            style: AppTextStyle.withColor(
+              AppTextStyle.titleModals,
+              AppColors.primary
+            ),
+          ),
+          content: Text(
+            '!Objetivo logrado!',
+            style: AppTextStyle.withColor(
+              AppTextStyle.textTextsButtons,
+              AppColors.primary
+            )
+          ),
+          actions: [
+            Center(
+              child: ButtonCustom(
+                width: size.width * 0.5,
+                height: size.height * 0.05,
+                textButton: "Continuar",
+                onPressed: () {
+                  deactivateAlarm();
+                  Navigator.pushNamed(context, 'home');
+                }
+              ),
+            )
+          ],
+        );
+      }
     );
   }
 
@@ -414,6 +462,7 @@ class _FocusPomodoroScreenState extends State<FocusPomodoroScreen> {
         setState(() => totalSeconds--);
       } else {
         activateAlarm();
+        showDialogAlarm(context);
         timer?.cancel();
       }
     });

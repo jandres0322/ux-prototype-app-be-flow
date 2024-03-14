@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ux_prototype_app_be_flow/src/constants/colors.dart';
 import 'package:ux_prototype_app_be_flow/src/constants/routes.dart';
@@ -19,6 +20,10 @@ class App extends StatelessWidget {
           useInheritedMediaQuery: true,
           designSize: const Size(360, 780),
           builder: (context, widget) {
+            SystemChrome.setPreferredOrientations([
+              DeviceOrientation.portraitUp,
+              DeviceOrientation.portraitDown
+            ]);
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               routes: RoutesApp.routes,

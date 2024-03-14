@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="ux_prototype_app_be_flow"
+        android:label="Be Flow"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
