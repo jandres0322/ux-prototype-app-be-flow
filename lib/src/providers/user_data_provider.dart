@@ -65,7 +65,7 @@ class UserDataProvider extends ChangeNotifier {
   void updateUserName() {
     _userLogged!.name = _nameRegister;
     for (int i = 0; i < _usersRegistered.length; i++) {
-      if (_usersRegistered[i]!.cellphone == _cellphoneRegister) {
+      if (_usersRegistered[i]?.cellphone == _cellphoneRegister) {
         _usersRegistered[i] = _usersRegistered[i]!.copyWith(name: _nameRegister);
         break;
       }
@@ -102,7 +102,7 @@ class UserDataProvider extends ChangeNotifier {
 
   bool registerUser() {
     if ( _usersRegistered.isNotEmpty ) {
-      final user = _usersRegistered.firstWhere((user) => user!.cellphone == _cellphoneRegister, orElse: () => null);
+      final user = _usersRegistered.firstWhere((user) => user?.cellphone == _cellphoneRegister, orElse: () => null);
       if ( user != null ) return false;
     }
     User newUser = User(
@@ -122,8 +122,8 @@ class UserDataProvider extends ChangeNotifier {
     _disabledButtonCreateTask = true;
     Task newTask = Task(description: _descriptionNewTask);
     for (var user in _usersRegistered) {
-      if (user!.cellphone == _userLogged!.cellphone) {
-        user.tasks.add(newTask);
+      if (user?.cellphone == _userLogged!.cellphone) {
+        user?.tasks.add(newTask);
       break;
       }
     }
